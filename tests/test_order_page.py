@@ -72,17 +72,9 @@ class TestOrderPage(TestPage):
 
         order_page.click_next_button()
 
-        # set_date
-        date_field_locator = OrderPageLocators.Fields.DATE
-        WebDriverWait(self.driver, 3).until(
-            expected_conditions.visibility_of_element_located(date_field_locator))
-        field = self.driver.find_element(*date_field_locator)
-        field.click()
-        date_locator = OrderPageLocators.DATES[order_input_data.date_index]
-        WebDriverWait(self.driver, 3).until(
-            expected_conditions.visibility_of_element_located(date_locator)) # wait for load
-        field = self.driver.find_element(*date_locator)
-        field.click()
+        order_page.wait_for_load_about_rent_form()
+
+        order_page.set_date(order_input_data.date_index)
 
         # set_rental_period
         field = self.driver.find_element(*OrderPageLocators.Fields.RENTAL_PERIOD)

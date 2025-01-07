@@ -28,6 +28,9 @@ class OrderPageLocators:
                GREY : (By.XPATH, ".//input[@class='Checkbox_Input__14A2w' and @id='grey']")}
 
     TRACK_ID = (By.XPATH, ".//div[@class='Order_Text__2broi']")
+
+    ABOUT_RENT = (By.XPATH, ".//div[@class='Order_Header__BZXOb' and text()='Про аренду']")
+
     class Buttons:
         NEXT = (By.XPATH, ".//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Далее']")
         POP_UP_APPROVE_ORDER = (By.XPATH, ".//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']")

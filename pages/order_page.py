@@ -39,3 +39,22 @@ class OrderPage(Page):
 
     def click_next_button(self):
         self.driver.find_element(*OrderPageLocators.Buttons.NEXT).click()
+
+    def wait_for_load_about_rent_form(self):
+        WebDriverWait(self.driver, 3).until(
+            expected_conditions.visibility_of_element_located(OrderPageLocators.ABOUT_RENT))  # wait for load
+
+    def click_date_field(self):
+        self.driver.find_element(*OrderPageLocators.Fields.DATE).click()
+
+    def wait_for_load_calendar(self, date_index):
+        WebDriverWait(self.driver, 3).until(
+            expected_conditions.visibility_of_element_located(OrderPageLocators.DATES[date_index]))  # wait for load
+
+    def click_date_in_calendar(self, date_index):
+        self.driver.find_element(*OrderPageLocators.DATES[date_index]).click()
+
+    def set_date(self, date_index):
+        self.click_date_field()
+        self.wait_for_load_calendar(date_index)
+        self.click_date_in_calendar(date_index)
