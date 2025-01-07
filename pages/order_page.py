@@ -78,3 +78,6 @@ class OrderPage(Page):
 
     def set_color(self, color):
         self.driver.find_element(*OrderPageLocators.SCOOTER_COLORS[color]).click()
+
+    def set_comment(self, comment):
+        self.driver.find_element(*OrderPageLocators.Fields.COMMENT).send_keys(comment)

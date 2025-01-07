@@ -80,9 +80,7 @@ class TestOrderPage(TestPage):
 
         order_page.set_color(order_input_data.color)
 
-        #set_comment
-        field = self.driver.find_element(*OrderPageLocators.Fields.COMMENT)
-        field.send_keys(order_input_data.comment)
+        order_page.set_comment(order_input_data.comment)
 
         #make order
         field = self.driver.find_element(*OrderPageLocators.Buttons.DOWN_ORDER)
