@@ -58,3 +58,20 @@ class OrderPage(Page):
         self.click_date_field()
         self.wait_for_load_calendar(date_index)
         self.click_date_in_calendar(date_index)
+
+    def click_rental_period_field(self):
+        self.driver.find_element(*OrderPageLocators.Fields.RENTAL_PERIOD).click()
+
+    def wait_for_load_rental_period_menu(self, rental_period_index):
+        period_locator = OrderPageLocators.RENTAL_PERIODS[rental_period_index]
+        WebDriverWait(self.driver, 3).until(
+            expected_conditions.visibility_of_element_located(period_locator))  # wait for load
+
+    def click_rental_period(self, rental_period_index):
+        period_locator = OrderPageLocators.RENTAL_PERIODS[rental_period_index]
+        self.driver.find_element(*period_locator).click()
+
+    def set_rental_period(self, rental_period_index):
+        self.click_rental_period_field()
+        self.wait_for_load_rental_period_menu(rental_period_index)
+        self.click_rental_period(rental_period_index)

@@ -76,14 +76,7 @@ class TestOrderPage(TestPage):
 
         order_page.set_date(order_input_data.date_index)
 
-        # set_rental_period
-        field = self.driver.find_element(*OrderPageLocators.Fields.RENTAL_PERIOD)
-        field.click()
-        period_locator = OrderPageLocators.RENTAL_PERIODS[order_input_data.rental_period_index]
-        WebDriverWait(self.driver, 3).until(
-            expected_conditions.visibility_of_element_located(period_locator)) # wait for load
-        field = self.driver.find_element(*period_locator)
-        field.click()
+        order_page.set_rental_period(order_input_data.rental_period_index)
 
         #set_color
         field = self.driver.find_element(*OrderPageLocators.SCOOTER_COLORS[order_input_data.color])
