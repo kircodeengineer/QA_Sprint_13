@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from test_page import TestPage
@@ -6,11 +7,6 @@ from pages.home_page import HomePage
 from pages.order_page import OrderPage
 from locators.order_page_locators import OrderPageLocators
 from locators.home_page_locators import HomePageLocators
-
-import time
-
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
 
 class OrderInputData:
     def __init__(self, name, surname, address, station_index, phone_number, date_index, rental_period_index, color, comment):
@@ -46,6 +42,18 @@ order_input_data_list = [ OrderInputData("Иван",
 
 class TestOrderPage(TestPage):
     cookie = False
+
+    @allure.title(
+        'Проверка позитивного сценария заказа самоката.')  # декораторы
+    @allure.description(
+        'Из чего состоит позитивный сценарий:\n'
+        'Нажать кнопку «Заказать». На странице две кнопки заказа.\n'
+        'Заполнить форму заказа.\n'
+        'Проверить, что появилось всплывающее окно с сообщением об успешном создании заказа.\n'
+        'Проверить: если нажать на логотип «Самоката», попадёшь на главную страницу «Самоката».\n'
+        'Проверить: если нажать на логотип Яндекса, в новом окне через редирект откроется главная страница Дзена.\n')
+    @allure.testcase('ссылка на тест-кейс',
+                     'https://practicum.yandex.ru/learn/qa-engineer-full-stack/courses/c8400844-cd6d-4bdc-80ea-aca5b24f3a4d/sprints/371240/topics/152222da-6b24-4ebe-936e-e5bb5f8cb37c/lessons/84de1174-4db2-426e-8c85-215190f90ef4/')
     @pytest.mark.parametrize('order_button , order_input_data',
                              [
                              [HomePageLocators.UP_ORDER, order_input_data_list[0]],
