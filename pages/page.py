@@ -26,6 +26,5 @@ class Page:
         WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url.YANDEX))
 
     def move_from_yandex_page_to_order_scooter_page(self):
-        self.driver.close()
         self.driver.switch_to.window(self.driver.window_handles[0])
         WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url.HOME_PAGE))
