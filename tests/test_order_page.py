@@ -57,19 +57,15 @@ class TestOrderPage(TestPage):
     def test_scooter_order(self, order_button, order_input_data):
 
         self.driver.get(url.HOME_PAGE)
-        self.driver.fullscreen_window()
         home_page = HomePage(self.driver)
         home_page.wait_for_load_home_page()
-
         home_page.click_order_button(order_button)
 
         order_page = OrderPage(self.driver)
         order_page.wait_for_load_order_page()
 
         #set_make_order ???
-        # set_name()
-        field = self.driver.find_element(*OrderPageLocators.Fields.NAME)
-        field.send_keys(order_input_data.name)
+        order_page.set_name(order_input_data.name)
 
         # set_surname
         field = self.driver.find_element(*OrderPageLocators.Fields.SURNAME)
