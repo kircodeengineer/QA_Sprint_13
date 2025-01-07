@@ -1,6 +1,7 @@
 from locators.home_page_locators import HomePageLocators
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+
 from url import Url
 
 class HomePage:
@@ -17,17 +18,17 @@ class HomePage:
     def __init__(self, driver):
         self.driver = driver
 
-    def __click_question(self, locator):
-        question = self.driver.find_element(*locator)
-        self.driver.execute_script("arguments[0].scrollIntoView();", question)
-        question.click()
+    def __click_locator(self, locator):
+        locator_to_click = self.driver.find_element(*locator)
+        self.driver.execute_script("arguments[0].scrollIntoView();", locator_to_click)
+        locator_to_click.click()
 
     def wait_for_load_home_page(self):
         WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(Url.HOME_PAGE))
 
     # cost_and_pay
     def click_question_cost_and_pay(self):
-        self.__click_question(HomePageLocators.Question.COST_AND_PAY)
+        self.__click_locator(HomePageLocators.Question.COST_AND_PAY)
 
     def wait_for_cost_and_pay_drop_answer(self):
         WebDriverWait(self.driver, 3).until(
@@ -38,7 +39,7 @@ class HomePage:
 
     # order_some_scooters
     def click_question_order_some_scooters(self):
-        self.__click_question(HomePageLocators.Question.ORDER_SOME_SCOOTERS)
+        self.__click_locator(HomePageLocators.Question.ORDER_SOME_SCOOTERS)
 
     def wait_for_order_some_scooters_answer(self):
         WebDriverWait(self.driver, 3).until(
@@ -49,7 +50,7 @@ class HomePage:
 
     # rental_time
     def click_question_rental_time(self):
-        self.__click_question(HomePageLocators.Question.RENTAL_TIME)
+        self.__click_locator(HomePageLocators.Question.RENTAL_TIME)
 
     def wait_for_rental_time_answer(self):
         WebDriverWait(self.driver, 3).until(
@@ -60,7 +61,7 @@ class HomePage:
 
     # order_today
     def click_question_order_today(self):
-        self.__click_question(HomePageLocators.Question.ORDER_TODAY)
+        self.__click_locator(HomePageLocators.Question.ORDER_TODAY)
 
     def wait_for_order_today_answer(self):
         WebDriverWait(self.driver, 3).until(
@@ -71,7 +72,7 @@ class HomePage:
 
     # extend_order
     def click_question_extend_order(self):
-        self.__click_question(HomePageLocators.Question.EXTEND_ORDER)
+        self.__click_locator(HomePageLocators.Question.EXTEND_ORDER)
 
     def wait_for_extend_order_answer(self):
         WebDriverWait(self.driver, 3).until(
@@ -82,7 +83,7 @@ class HomePage:
 
     # charger_included
     def click_question_charger_included(self):
-        self.__click_question(HomePageLocators.Question.CHARGER_INCLUDED)
+        self.__click_locator(HomePageLocators.Question.CHARGER_INCLUDED)
 
     def wait_for_charger_included_answer(self):
         WebDriverWait(self.driver, 3).until(
@@ -93,7 +94,7 @@ class HomePage:
 
     # cancel_order
     def click_question_cancel_order(self):
-        self.__click_question(HomePageLocators.Question.CANCEL_ORDER)
+        self.__click_locator(HomePageLocators.Question.CANCEL_ORDER)
 
     def wait_for_cancel_order_answer(self):
         WebDriverWait(self.driver, 3).until(
@@ -104,7 +105,7 @@ class HomePage:
 
     # beyond_mkad
     def click_question_beyond_mkad(self):
-        self.__click_question(HomePageLocators.Question.BEYOND_MKAD)
+        self.__click_locator(HomePageLocators.Question.BEYOND_MKAD)
 
     def wait_for_beyond_mkad_answer(self):
         WebDriverWait(self.driver, 3).until(
@@ -113,5 +114,9 @@ class HomePage:
     def get_beyond_mkad_text(self):
         return self.driver.find_element(*HomePageLocators.Answer.BEYOND_MKAD).text
 
+    # go to order page
     def click_up_order_button(self):
-        self.__click_question(HomePageLocators.Button.UP_ORDER)
+        self.__click_locator(HomePageLocators.Button.UP_ORDER)
+
+    def click_down_order_button(self):
+        self.__click_locator(HomePageLocators.Button.DOWN_ORDER)

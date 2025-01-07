@@ -13,7 +13,7 @@ class HomePageLocators:
 
     class Button:
         UP_ORDER = (By.XPATH, ".//button[@class='Button_Button__ra12g' and text()='Заказать']")
-        DOWN_ORDER = (By.XPATH, ".//button[@class='Button_Button__ra12g Button_UltraBig__UU3Lp' and text()='Заказать']")
+        DOWN_ORDER = (By.XPATH, ".//div[@class='Home_FinishButton__1_cWm']/button[text()='Заказать']")
 
     class Question:
         COST_AND_PAY = (By.ID, 'accordion__heading-0')
