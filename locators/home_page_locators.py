@@ -10,6 +10,11 @@ class HomePageLocators:
         CHARGER_INCLUDED = (By.XPATH, ".//div[@id='accordion__panel-5' and not(@hidden)]")
         CANCEL_ORDER = (By.XPATH, ".//div[@id='accordion__panel-6' and not(@hidden)]")
         BEYOND_MKAD = (By.XPATH, ".//div[@id='accordion__panel-7' and not(@hidden)]")
+
+    class Button:
+        UP_ORDER = (By.XPATH, ".//button[@class='Button_Button__ra12g' and text()='Заказать']")
+        DOWN_ORDER = (By.XPATH, ".//button[@class='Button_Button__ra12g Button_UltraBig__UU3Lp' and text()='Заказать']")
+
     class Question:
         COST_AND_PAY = (By.ID, 'accordion__heading-0')
         ORDER_SOME_SCOOTERS = (By.ID, 'accordion__heading-1')

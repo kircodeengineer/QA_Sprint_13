@@ -14,13 +14,13 @@ class HomePage:
         CANCEL_ORDER = "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои."
         BEYOND_MKAD = "Да, обязательно. Всем самокатов! И Москве, и Московской области."
 
+    def __init__(self, driver):
+        self.driver = driver
+
     def __click_question(self, locator):
         question = self.driver.find_element(*locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", question)
         question.click()
-
-    def __init__(self, driver):
-        self.driver = driver
 
     def wait_for_load_home_page(self):
         WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(Url.HOME_PAGE))
@@ -112,3 +112,6 @@ class HomePage:
 
     def get_beyond_mkad_text(self):
         return self.driver.find_element(*HomePageLocators.Answer.BEYOND_MKAD).text
+
+    def click_up_order_button(self):
+        self.__click_question(HomePageLocators.Button.UP_ORDER)
