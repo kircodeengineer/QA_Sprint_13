@@ -1,10 +1,10 @@
 from pages.home_page import HomePage
-from url import Url
+import url
 from test_page import TestPage
 
 class TestHomePage(TestPage):
     def test_question_cost_and_pay(self):
-        self.driver.get(Url.HOME_PAGE)
+        self.driver.get(url.HOME_PAGE)
         home_page = HomePage(self.driver)
         home_page.wait_for_load_home_page()
         home_page.click_question_cost_and_pay()
@@ -14,9 +14,12 @@ class TestHomePage(TestPage):
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value }", получено "{actually_value}"'
 
     def test_question_order_some_scooters(self):
-        self.driver.get(Url.HOME_PAGE)
+        self.driver.get(url.HOME_PAGE)
         home_page = HomePage(self.driver)
         home_page.wait_for_load_home_page()
+        cookies = self.driver.get_cookies()
+        if len(cookies) == 0:
+            home_page.click_cookie()
         home_page.click_question_order_some_scooters()
         home_page.wait_for_order_some_scooters_answer()
         actually_value = home_page.get_order_some_scooters_answer_text()
@@ -24,7 +27,7 @@ class TestHomePage(TestPage):
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
 
     def test_question_rental_time(self):
-        self.driver.get(Url.HOME_PAGE)
+        self.driver.get(url.HOME_PAGE)
         home_page = HomePage(self.driver)
         home_page.wait_for_load_home_page()
         home_page.click_question_rental_time()
@@ -34,7 +37,7 @@ class TestHomePage(TestPage):
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
 
     def test_question_order_today(self):
-        self.driver.get(Url.HOME_PAGE)
+        self.driver.get(url.HOME_PAGE)
         home_page = HomePage(self.driver)
         home_page.wait_for_load_home_page()
         home_page.click_question_order_today()
@@ -44,7 +47,7 @@ class TestHomePage(TestPage):
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
 
     def test_question_extend_order(self):
-        self.driver.get(Url.HOME_PAGE)
+        self.driver.get(url.HOME_PAGE)
         home_page = HomePage(self.driver)
         home_page.wait_for_load_home_page()
         home_page.click_question_extend_order()
@@ -54,7 +57,7 @@ class TestHomePage(TestPage):
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
 
     def test_question_charger_included(self):
-        self.driver.get(Url.HOME_PAGE)
+        self.driver.get(url.HOME_PAGE)
         home_page = HomePage(self.driver)
         home_page.wait_for_load_home_page()
         home_page.click_question_charger_included()
@@ -64,7 +67,7 @@ class TestHomePage(TestPage):
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
 
     def test_question_cancel_order(self):
-        self.driver.get(Url.HOME_PAGE)
+        self.driver.get(url.HOME_PAGE)
         home_page = HomePage(self.driver)
         home_page.wait_for_load_home_page()
         home_page.click_question_cancel_order()
@@ -74,7 +77,7 @@ class TestHomePage(TestPage):
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
 
     def test_question_beyond_mkad(self):
-        self.driver.get(Url.HOME_PAGE)
+        self.driver.get(url.HOME_PAGE)
         home_page = HomePage(self.driver)
         home_page.wait_for_load_home_page()
         home_page.click_question_beyond_mkad()

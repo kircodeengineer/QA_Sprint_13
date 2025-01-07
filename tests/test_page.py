@@ -5,10 +5,8 @@ class TestPage:
 
     @classmethod
     def setup_class(cls):
-        # создали драйвер для браузера Chrome
-        cls.driver = webdriver.Chrome()
+        cls.driver = webdriver.Firefox()
 
     @classmethod
     def teardown_class(cls):
-        # Закрой браузер
         cls.driver.quit()
