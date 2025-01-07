@@ -8,6 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from locators.home_page_locators import HomePageLocators
 from pages.home_page import HomePage
+from url import Url
 
 class TestHomePage:
     driver = None
@@ -19,9 +20,8 @@ class TestHomePage:
 
     def test_question_cost_and_pay(self):
         # перешли на страницу тестового приложения
-        url = 'https://qa-scooter.praktikum-services.ru/'
-        self.driver.get(url)
-        WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url))
+        self.driver.get(Url.HOME_PAGE)
+        WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(Url.HOME_PAGE))
         home_page = HomePage(self.driver)
         home_page.click_question_cost_and_pay()
         WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(HomePageLocators.ANSWER_COST_AND_PAY_VISIBLE))
