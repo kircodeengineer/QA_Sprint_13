@@ -107,8 +107,6 @@ class OrderPage(Page):
             expected_conditions.visibility_of_element_located(OrderPageLocators.Buttons.POP_UP_CHECK_STATUS))
 
     def move_to_track_id_page(self):
-        field = self.driver.find_element(*OrderPageLocators.TRACK_ID)
-        track_id = get_digits(field.text)
-        field = self.driver.find_element(*OrderPageLocators.Buttons.POP_UP_CHECK_STATUS)
-        field.click()
+        track_id = get_digits(self.driver.find_element(*OrderPageLocators.TRACK_ID).text)
+        self.driver.find_element(*OrderPageLocators.Buttons.POP_UP_CHECK_STATUS).click()
         WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url.TRACK_PAGE + track_id))
