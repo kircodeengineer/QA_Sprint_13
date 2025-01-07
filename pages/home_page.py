@@ -68,3 +68,14 @@ class HomePage:
 
     def get_order_today_text(self):
         return self.driver.find_element(*HomePageLocators.Answer.ORDER_TODAY).text
+
+    # extend_order
+    def click_question_extend_order(self):
+        self.__click_question(HomePageLocators.Question.EXTEND_ORDER)
+
+    def wait_for_extend_order_answer(self):
+        WebDriverWait(self.driver, 3).until(
+            expected_conditions.visibility_of_element_located(HomePageLocators.Answer.EXTEND_ORDER))
+
+    def get_extend_order_text(self):
+        return self.driver.find_element(*HomePageLocators.Answer.EXTEND_ORDER).text

@@ -52,6 +52,16 @@ class TestHomePage:
         expected_value = HomePage.Answers.ORDER_TODAY
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
 
+    def test_question_extend_order(self):
+        self.driver.get(Url.HOME_PAGE)
+        home_page = HomePage(self.driver)
+        home_page.wait_for_load_home_page()
+        home_page.click_question_extend_order()
+        home_page.wait_for_extend_order_answer()
+        actually_value = home_page.get_extend_order_text()
+        expected_value = HomePage.Answers.EXTEND_ORDER
+        assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
+
     @classmethod
     def teardown_class(cls):
         # Закрой браузер
