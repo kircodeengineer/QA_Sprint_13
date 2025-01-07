@@ -64,19 +64,11 @@ class TestOrderPage(TestPage):
         order_page = OrderPage(self.driver)
         order_page.wait_for_load_order_page()
 
-        #set_make_order ???
-        order_page.set_name(order_input_data.name)
-
-        order_page.set_surname(order_input_data.surname)
-
-        order_page.set_address(order_input_data.address)
-
-        # set_station
-        order_page.set_station(order_input_data.station_index)
-
-        # set_phone_number
-        field = self.driver.find_element(*OrderPageLocators.Fields.PHONE_NUMBER)
-        field.send_keys(order_input_data.phone_number)
+        order_page.set_who_is_scooter_for(order_input_data.name,
+                                           order_input_data.surname,
+                                           order_input_data.address,
+                                           order_input_data.station_index,
+                                           order_input_data.phone_number)
 
         # next
         field = self.driver.find_element(*OrderPageLocators.Buttons.NEXT)

@@ -26,3 +26,13 @@ class OrderPage(Page):
         self.driver.find_element(*OrderPageLocators.Fields.STATION).click()
         self.wait_for_load_stations_menu()
         self.driver.find_element(*OrderPageLocators.StationsMenu.STATIONS[station_index]).click()
+
+    def set_phone_number(self, phone_number):
+        self.driver.find_element(*OrderPageLocators.Fields.PHONE_NUMBER).send_keys(phone_number)
+
+    def set_who_is_scooter_for(self, name, surname, address, station_index, phone_number):
+        self.set_name(name)
+        self.set_surname(surname)
+        self.set_address(address)
+        self.set_station(station_index)
+        self.set_phone_number(phone_number)
