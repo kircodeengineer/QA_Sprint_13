@@ -1,5 +1,9 @@
 from selenium.webdriver.common.by import By
 
 class HomePageLocators:
-    ANSWER_COST_AND_PAY_VISIBLE = (By.XPATH, ".//div[@id='accordion__panel-0' and not(@hidden)]")
-    QUESTION_COST_AND_PAY = (By.ID, 'accordion__heading-0')
+    class Answer:
+        COST_AND_PAY = (By.XPATH, ".//div[@id='accordion__panel-0' and not(@hidden)]")
+        ORDER_SOME_SCOOTERS = (By.XPATH, ".//div[@id='accordion__panel-1' and not(@hidden)]")
+    class Question:
+        COST_AND_PAY = (By.ID, 'accordion__heading-0')
+        ORDER_SOME_SCOOTERS = (By.ID, 'accordion__heading-1')
