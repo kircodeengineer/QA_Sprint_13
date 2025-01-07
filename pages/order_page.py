@@ -91,3 +91,10 @@ class OrderPage(Page):
 
     def click_order_button(self):
         self.driver.find_element(*OrderPageLocators.Buttons.DOWN_ORDER).click()
+
+    def wait_for_load_pop_up_window_approve_order(self):
+        WebDriverWait(self.driver, 3).until(
+            expected_conditions.visibility_of_element_located(OrderPageLocators.Buttons.POP_UP_APPROVE_ORDER))
+
+    def click_approve_order_button(self):
+        self.driver.find_element(*OrderPageLocators.Buttons.POP_UP_APPROVE_ORDER).click()

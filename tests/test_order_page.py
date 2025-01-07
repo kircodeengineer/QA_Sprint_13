@@ -79,12 +79,9 @@ class TestOrderPage(TestPage):
 
         order_page.click_order_button()
 
-        #approve order
-        approve_order_button_locator = OrderPageLocators.Buttons.POP_UP_APPROVE_ORDER
-        WebDriverWait(self.driver, 3).until(
-            expected_conditions.visibility_of_element_located(approve_order_button_locator)) # wait for load
-        field = self.driver.find_element(*approve_order_button_locator)
-        field.click()
+        order_page.wait_for_load_pop_up_window_approve_order()
+
+        order_page.click_approve_order_button()
 
         # watch status
         check_status_button_locator = OrderPageLocators.Buttons.POP_UP_CHECK_STATUS
