@@ -5,6 +5,9 @@ from locators.order_page_locators import OrderPageLocators
 from pages.page import Page
 import url
 
+def get_digits(text):
+    return ''.join(c for c in text if c.isdigit())
+
 class OrderPage(Page):
     def wait_for_load_order_page(self):
         WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url.ORDER_PAGE))
@@ -98,3 +101,14 @@ class OrderPage(Page):
 
     def click_approve_order_button(self):
         self.driver.find_element(*OrderPageLocators.Buttons.POP_UP_APPROVE_ORDER).click()
+
+    def wait_for_load_pop_up_window_track_id(self):
+        WebDriverWait(self.driver, 3).until(
+            expected_conditions.visibility_of_element_located(OrderPageLocators.Buttons.POP_UP_CHECK_STATUS))
+
+    def move_to_track_id_page(self):
+        field = self.driver.find_element(*OrderPageLocators.TRACK_ID)
+        track_id = get_digits(field.text)
+        field = self.driver.find_element(*OrderPageLocators.Buttons.POP_UP_CHECK_STATUS)
+        field.click()
+        WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url.TRACK_PAGE + track_id))

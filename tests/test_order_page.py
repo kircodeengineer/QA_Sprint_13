@@ -43,8 +43,6 @@ order_input_data_list = [ OrderInputData("Иван",
                                          OrderPageLocators.GREY,
                                          "До вечера")]
 
-def get_digits(text):
-    return ''.join(c for c in text if c.isdigit())
 
 class TestOrderPage(TestPage):
     cookie = False
@@ -83,16 +81,9 @@ class TestOrderPage(TestPage):
 
         order_page.click_approve_order_button()
 
-        # watch status
-        check_status_button_locator = OrderPageLocators.Buttons.POP_UP_CHECK_STATUS
-        WebDriverWait(self.driver, 3).until(
-            expected_conditions.visibility_of_element_located(check_status_button_locator)) # wait for load
-        field = self.driver.find_element(*OrderPageLocators.TRACK_ID)
-        track_id = get_digits(field.text)
-        field = self.driver.find_element(*check_status_button_locator)
-        field.click()
+        order_page.wait_for_load_pop_up_window_track_id()
 
-        WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url.TRACK_PAGE+track_id))
+        order_page.move_to_track_id_page()
 
         order_page.click_logo()
         home_page.wait_for_load_home_page()
