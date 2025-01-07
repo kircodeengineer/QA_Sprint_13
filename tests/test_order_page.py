@@ -70,9 +70,7 @@ class TestOrderPage(TestPage):
                                            order_input_data.station_index,
                                            order_input_data.phone_number)
 
-        # next
-        field = self.driver.find_element(*OrderPageLocators.Buttons.NEXT)
-        field.click()
+        order_page.click_next_button()
 
         # set_date
         date_field_locator = OrderPageLocators.Fields.DATE

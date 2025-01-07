@@ -36,3 +36,6 @@ class OrderPage(Page):
         self.set_address(address)
         self.set_station(station_index)
         self.set_phone_number(phone_number)
+
+    def click_next_button(self):
+        self.driver.find_element(*OrderPageLocators.Buttons.NEXT).click()
