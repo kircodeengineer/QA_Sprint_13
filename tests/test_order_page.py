@@ -69,9 +69,7 @@ class TestOrderPage(TestPage):
 
         order_page.set_surname(order_input_data.surname)
 
-        # set_address
-        field = self.driver.find_element(*OrderPageLocators.Fields.ADDRESS)
-        field.send_keys(order_input_data.address)
+        order_page.set_address(order_input_data.address)
 
         # set_station
         field = self.driver.find_element(*OrderPageLocators.Fields.STATION)

@@ -14,3 +14,6 @@ class OrderPage(Page):
 
     def set_surname(self, surname):
         self.driver.find_element(*OrderPageLocators.Fields.SURNAME).send_keys(surname)
+
+    def set_address(self, address):
+        self.driver.find_element(*OrderPageLocators.Fields.ADDRESS).send_keys(address)
