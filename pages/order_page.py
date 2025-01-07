@@ -30,7 +30,7 @@ class OrderPage(Page):
     def set_phone_number(self, phone_number):
         self.driver.find_element(*OrderPageLocators.Fields.PHONE_NUMBER).send_keys(phone_number)
 
-    def set_who_is_scooter_for(self, name, surname, address, station_index, phone_number):
+    def set_form_who_is_scooter_for(self, name, surname, address, station_index, phone_number):
         self.set_name(name)
         self.set_surname(surname)
         self.set_address(address)
@@ -81,3 +81,13 @@ class OrderPage(Page):
 
     def set_comment(self, comment):
         self.driver.find_element(*OrderPageLocators.Fields.COMMENT).send_keys(comment)
+
+    def set_form_about_rent(self, date_index, rental_period_index, color, comment):
+        self.wait_for_load_about_rent_form()
+        self.set_date(date_index)
+        self.set_rental_period(rental_period_index)
+        self.set_color(color)
+        self.set_comment(comment)
+
+    def click_order_button(self):
+        self.driver.find_element(*OrderPageLocators.Buttons.DOWN_ORDER).click()

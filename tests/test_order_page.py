@@ -64,27 +64,20 @@ class TestOrderPage(TestPage):
         order_page = OrderPage(self.driver)
         order_page.wait_for_load_order_page()
 
-        order_page.set_who_is_scooter_for(order_input_data.name,
-                                           order_input_data.surname,
-                                           order_input_data.address,
-                                           order_input_data.station_index,
-                                           order_input_data.phone_number)
+        order_page.set_form_who_is_scooter_for(order_input_data.name,
+                                               order_input_data.surname,
+                                               order_input_data.address,
+                                               order_input_data.station_index,
+                                               order_input_data.phone_number)
 
         order_page.click_next_button()
 
-        order_page.wait_for_load_about_rent_form()
+        order_page.set_form_about_rent(order_input_data.date_index,
+                                       order_input_data.rental_period_index,
+                                       order_input_data.color,
+                                       order_input_data.comment)
 
-        order_page.set_date(order_input_data.date_index)
-
-        order_page.set_rental_period(order_input_data.rental_period_index)
-
-        order_page.set_color(order_input_data.color)
-
-        order_page.set_comment(order_input_data.comment)
-
-        #make order
-        field = self.driver.find_element(*OrderPageLocators.Buttons.DOWN_ORDER)
-        field.click()
+        order_page.click_order_button()
 
         #approve order
         approve_order_button_locator = OrderPageLocators.Buttons.POP_UP_APPROVE_ORDER
