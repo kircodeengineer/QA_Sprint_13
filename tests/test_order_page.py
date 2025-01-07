@@ -78,9 +78,7 @@ class TestOrderPage(TestPage):
 
         order_page.set_rental_period(order_input_data.rental_period_index)
 
-        #set_color
-        field = self.driver.find_element(*OrderPageLocators.SCOOTER_COLORS[order_input_data.color])
-        field.click()
+        order_page.set_color(order_input_data.color)
 
         #set_comment
         field = self.driver.find_element(*OrderPageLocators.Fields.COMMENT)

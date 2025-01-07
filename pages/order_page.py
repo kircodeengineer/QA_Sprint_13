@@ -75,3 +75,6 @@ class OrderPage(Page):
         self.click_rental_period_field()
         self.wait_for_load_rental_period_menu(rental_period_index)
         self.click_rental_period(rental_period_index)
+
+    def set_color(self, color):
+        self.driver.find_element(*OrderPageLocators.SCOOTER_COLORS[color]).click()
