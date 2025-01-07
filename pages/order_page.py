@@ -17,3 +17,12 @@ class OrderPage(Page):
 
     def set_address(self, address):
         self.driver.find_element(*OrderPageLocators.Fields.ADDRESS).send_keys(address)
+
+    def wait_for_load_stations_menu(self):
+        WebDriverWait(self.driver, 3).until(
+            expected_conditions.visibility_of_element_located(OrderPageLocators.StationsMenu.STATIONS_MENU))
+
+    def set_station(self, station_index):
+        self.driver.find_element(*OrderPageLocators.Fields.STATION).click()
+        self.wait_for_load_stations_menu()
+        self.driver.find_element(*OrderPageLocators.StationsMenu.STATIONS[station_index]).click()

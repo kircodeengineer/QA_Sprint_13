@@ -72,12 +72,7 @@ class TestOrderPage(TestPage):
         order_page.set_address(order_input_data.address)
 
         # set_station
-        field = self.driver.find_element(*OrderPageLocators.Fields.STATION)
-        field.click()
-        WebDriverWait(self.driver, 3).until(
-            expected_conditions.visibility_of_element_located(OrderPageLocators.StationsMenu.STATIONS_MENU))
-        field = self.driver.find_element(*OrderPageLocators.StationsMenu.STATIONS[order_input_data.station_index]) # wait for load
-        field.click()
+        order_page.set_station(order_input_data.station_index)
 
         # set_phone_number
         field = self.driver.find_element(*OrderPageLocators.Fields.PHONE_NUMBER)
