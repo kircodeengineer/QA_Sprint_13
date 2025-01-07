@@ -101,3 +101,14 @@ class HomePage:
 
     def get_cancel_order_text(self):
         return self.driver.find_element(*HomePageLocators.Answer.CANCEL_ORDER).text
+
+    # beyond_mkad
+    def click_question_beyond_mkad(self):
+        self.__click_question(HomePageLocators.Question.BEYOND_MKAD)
+
+    def wait_for_beyond_mkad_answer(self):
+        WebDriverWait(self.driver, 3).until(
+            expected_conditions.visibility_of_element_located(HomePageLocators.Answer.BEYOND_MKAD))
+
+    def get_beyond_mkad_text(self):
+        return self.driver.find_element(*HomePageLocators.Answer.BEYOND_MKAD).text

@@ -82,7 +82,15 @@ class TestHomePage:
         expected_value = HomePage.Answers.CANCEL_ORDER
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
 
-
+    def test_question_beyond_mkad(self):
+        self.driver.get(Url.HOME_PAGE)
+        home_page = HomePage(self.driver)
+        home_page.wait_for_load_home_page()
+        home_page.click_question_beyond_mkad()
+        home_page.wait_for_beyond_mkad_answer()
+        actually_value = home_page.get_beyond_mkad_text()
+        expected_value = HomePage.Answers.BEYOND_MKAD
+        assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
 
     @classmethod
     def teardown_class(cls):
