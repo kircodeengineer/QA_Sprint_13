@@ -88,11 +88,15 @@ class TestOrderPage(TestPage):
         order_page.click_logo()
         home_page.wait_for_load_home_page()
         home_page.click_yandex()
+
         self.driver.switch_to.window(self.driver.window_handles[1])
         WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url.YANDEX))
+
         self.driver.close()
+
         self.driver.switch_to.window(self.driver.window_handles[0])
         WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url.HOME_PAGE))
+
         actually_value = self.driver.current_url
         expected_value = url.HOME_PAGE
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
