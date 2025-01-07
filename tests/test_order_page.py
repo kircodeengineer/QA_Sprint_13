@@ -89,13 +89,9 @@ class TestOrderPage(TestPage):
         home_page.wait_for_load_home_page()
         home_page.click_yandex()
 
-        self.driver.switch_to.window(self.driver.window_handles[1])
-        WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url.YANDEX))
+        home_page.wait_for_load_yandex_page()
 
-        self.driver.close()
-
-        self.driver.switch_to.window(self.driver.window_handles[0])
-        WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url.HOME_PAGE))
+        home_page.move_from_yandex_page_to_order_scooter_page()
 
         actually_value = self.driver.current_url
         expected_value = url.HOME_PAGE
