@@ -79,3 +79,25 @@ class HomePage:
 
     def get_extend_order_text(self):
         return self.driver.find_element(*HomePageLocators.Answer.EXTEND_ORDER).text
+
+    # charger_included
+    def click_question_charger_included(self):
+        self.__click_question(HomePageLocators.Question.CHARGER_INCLUDED)
+
+    def wait_for_charger_included_answer(self):
+        WebDriverWait(self.driver, 3).until(
+            expected_conditions.visibility_of_element_located(HomePageLocators.Answer.CHARGER_INCLUDED))
+
+    def get_charger_included_text(self):
+        return self.driver.find_element(*HomePageLocators.Answer.CHARGER_INCLUDED).text
+
+    # cancel_order
+    def click_question_cancel_order(self):
+        self.__click_question(HomePageLocators.Question.CANCEL_ORDER)
+
+    def wait_for_cancel_order_answer(self):
+        WebDriverWait(self.driver, 3).until(
+            expected_conditions.visibility_of_element_located(HomePageLocators.Answer.CANCEL_ORDER))
+
+    def get_cancel_order_text(self):
+        return self.driver.find_element(*HomePageLocators.Answer.CANCEL_ORDER).text

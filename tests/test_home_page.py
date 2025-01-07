@@ -62,6 +62,28 @@ class TestHomePage:
         expected_value = HomePage.Answers.EXTEND_ORDER
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
 
+    def test_question_charger_included(self):
+        self.driver.get(Url.HOME_PAGE)
+        home_page = HomePage(self.driver)
+        home_page.wait_for_load_home_page()
+        home_page.click_question_charger_included()
+        home_page.wait_for_charger_included_answer()
+        actually_value = home_page.get_charger_included_text()
+        expected_value = HomePage.Answers.CHARGER_INCLUDED
+        assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
+
+    def test_question_cancel_order(self):
+        self.driver.get(Url.HOME_PAGE)
+        home_page = HomePage(self.driver)
+        home_page.wait_for_load_home_page()
+        home_page.click_question_cancel_order()
+        home_page.wait_for_cancel_order_answer()
+        actually_value = home_page.get_cancel_order_text()
+        expected_value = HomePage.Answers.CANCEL_ORDER
+        assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
+
+
+
     @classmethod
     def teardown_class(cls):
         # Закрой браузер
