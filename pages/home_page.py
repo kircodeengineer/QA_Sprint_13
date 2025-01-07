@@ -47,7 +47,7 @@ class HomePage:
     def get_order_some_scooters_answer_text(self):
         return self.driver.find_element(*HomePageLocators.Answer.ORDER_SOME_SCOOTERS).text
 
-    # order_some_scooters
+    # rental_time
     def click_question_rental_time(self):
         self.__click_question(HomePageLocators.Question.RENTAL_TIME)
 
@@ -58,3 +58,13 @@ class HomePage:
     def get_rental_time_answer_text(self):
         return self.driver.find_element(*HomePageLocators.Answer.RENTAL_TIME).text
 
+    # order_today
+    def click_question_order_today(self):
+        self.__click_question(HomePageLocators.Question.ORDER_TODAY)
+
+    def wait_for_order_today_answer(self):
+        WebDriverWait(self.driver, 3).until(
+            expected_conditions.visibility_of_element_located(HomePageLocators.Answer.ORDER_TODAY))
+
+    def get_order_today_text(self):
+        return self.driver.find_element(*HomePageLocators.Answer.ORDER_TODAY).text
