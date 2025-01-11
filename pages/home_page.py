@@ -3,12 +3,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.common.exceptions import NoSuchElementException
 
-import url
 from locators.common_locators import CommonLocators
-from pages.page import Page
+from pages.base_page import BasePage
 from locators.home_page_locators import HomePageLocators
 
-class HomePage(Page):
+class HomePage(BasePage):
     class Answers:
         COST_AND_PAY = 'Сутки — 400 рублей. Оплата курьеру — наличными или картой.'
         ORDER_SOME_SCOOTERS = 'Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.'

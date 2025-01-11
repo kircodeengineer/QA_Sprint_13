@@ -4,14 +4,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 from locators.order_page_locators import OrderPageLocators
-from pages.page import Page
+from pages.base_page import BasePage
 import url
 
 @allure.step('Получаем числовое значение номера заказа из текста {text}')
 def get_digits(text):
     return ''.join(c for c in text if c.isdigit())
 
-class OrderPage(Page):
+class OrderPage(BasePage):
     @allure.step('Ожидаем загрузку страницы оформления заказа')
     def wait_for_load_order_page(self):
         WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url.ORDER_PAGE))
