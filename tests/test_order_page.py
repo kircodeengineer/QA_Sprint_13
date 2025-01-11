@@ -1,7 +1,6 @@
 import allure
 import pytest
 
-from test_page import TestPage
 import url
 from pages.home_page import HomePage
 from pages.order_page import OrderPage
@@ -40,7 +39,7 @@ order_input_data_list = [ OrderInputData("Иван",
                                          "До вечера")]
 
 
-class TestOrderPage(TestPage):
+class TestOrderPage:
     cookie = False
 
     @allure.title(
@@ -60,14 +59,12 @@ class TestOrderPage(TestPage):
                              [HomePageLocators.DOWN_ORDER, order_input_data_list[1]]
                              ]
                              )
-    def test_scooter_order(self, order_button, order_input_data):
-
-        self.driver.get(url.HOME_PAGE)
-        home_page = HomePage(self.driver)
+    def test_scooter_order(self, page_driver, order_button, order_input_data):
+        home_page = HomePage(page_driver)
         home_page.wait_for_load_home_page()
         home_page.click_order_button(order_button)
 
-        order_page = OrderPage(self.driver)
+        order_page = OrderPage(page_driver)
         order_page.wait_for_load_order_page()
 
         order_page.set_form_who_is_scooter_for(order_input_data.name,
@@ -101,6 +98,6 @@ class TestOrderPage(TestPage):
 
         home_page.move_from_yandex_page_to_order_scooter_page()
 
-        actually_value = self.driver.current_url
+        actually_value = page_driver.current_url
         expected_value = url.HOME_PAGE
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
