@@ -129,7 +129,7 @@ class OrderPage(BasePage):
     def click_approve_order_button(self):
         self.driver.find_element(*OrderPageLocators.Buttons.POP_UP_APPROVE_ORDER).click()
 
-    @allure.step('Ожидаем загрузку всплывающего Окна номером заказа')
+    @allure.step('Ожидаем загрузку всплывающего Окна с номером заказа')
     def wait_for_load_pop_up_window_track_id(self):
         WebDriverWait(self.driver, 3).until(
             expected_conditions.visibility_of_element_located(OrderPageLocators.Buttons.POP_UP_CHECK_STATUS))
