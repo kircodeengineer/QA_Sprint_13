@@ -10,21 +10,21 @@ class BasePage:
         self.driver = driver
 
     @allure.step('Клик по элементу по локатору {locator}')
-    def _click_locator(self, locator):
+    def click_locator(self, locator):
         locator_to_click = self.driver.find_element(*locator)
         locator_to_click.click()
 
     @allure.step('Клик по Лого приложения')
     def click_logo(self):
-        self._click_locator(CommonLocators.LOGO)
+        self.click_locator(CommonLocators.LOGO)
 
     @allure.step('Клик по Лого Яндекса')
     def click_yandex(self):
-        self._click_locator(CommonLocators.YANDEX)
+        self.click_locator(CommonLocators.YANDEX)
 
     @allure.step('Клик по кнопки Куки')
     def click_cookie(self):
-        self._click_locator(CommonLocators.COOKIE_BUTTON)
+        self.click_locator(CommonLocators.COOKIE_BUTTON)
 
     @allure.step('Ожидаем загрузку страницы Дзена')
     def wait_for_load_yandex_page(self):

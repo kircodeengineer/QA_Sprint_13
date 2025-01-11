@@ -61,6 +61,12 @@ class TestOrderPage:
         expected_value = 'Посмотреть статус'
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
 
+    @allure.title(
+        'Проверка клика по Лого приложения')  # декораторы
+    @allure.description(
+        'Выполняется переход со страницы заказа на начальную страницу приложения')
+    @allure.testcase('ссылка на тест-кейс',
+                     'https://practicum.yandex.ru/learn/qa-engineer-full-stack/courses/c8400844-cd6d-4bdc-80ea-aca5b24f3a4d/sprints/371240/topics/152222da-6b24-4ebe-936e-e5bb5f8cb37c/lessons/84de1174-4db2-426e-8c85-215190f90ef4/')
     def test_logo(self, page_driver):
         home_page = HomePage(page_driver)
         home_page.click_order_button(HomePageLocators.UP_ORDER)
@@ -70,6 +76,12 @@ class TestOrderPage:
         home_page.check_cookies()
         assert page_driver.current_url == url.HOME_PAGE
 
+    @allure.title(
+        'Проверка клика по Лого Яндекса')  # декораторы
+    @allure.description(
+        'Выполняется переход со главную страницу Дзена')
+    @allure.testcase('ссылка на тест-кейс',
+                     'https://practicum.yandex.ru/learn/qa-engineer-full-stack/courses/c8400844-cd6d-4bdc-80ea-aca5b24f3a4d/sprints/371240/topics/152222da-6b24-4ebe-936e-e5bb5f8cb37c/lessons/84de1174-4db2-426e-8c85-215190f90ef4/')
     def test_yandex(self, page_driver):
         home_page = HomePage(page_driver)
         home_page.click_yandex()
