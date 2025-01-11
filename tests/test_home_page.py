@@ -1,8 +1,6 @@
 import allure
-from selenium import webdriver
 
 from pages.home_page import HomePage
-import url
 
 class TestHomePage:
     @allure.title('Проверка выпадающего меню с вопросом - Сколько это стоит? И как оплатить?')  # декораторы
