@@ -61,7 +61,8 @@ class TestOrderPage:
                              )
     def test_scooter_order(self, page_driver, order_button, order_input_data):
         home_page = HomePage(page_driver)
-        home_page.wait_for_load_home_page()
+        home_page.check_cookies()
+
         home_page.click_order_button(order_button)
 
         order_page = OrderPage(page_driver)
@@ -88,16 +89,21 @@ class TestOrderPage:
 
         order_page.wait_for_load_pop_up_window_track_id()
 
-        order_page.move_to_track_id_page()
-
-        order_page.click_logo()
-        home_page.wait_for_load_home_page()
-        home_page.click_yandex()
-
-        home_page.wait_for_load_yandex_page()
-
-        home_page.move_from_yandex_page_to_order_scooter_page()
-
-        actually_value = page_driver.current_url
-        expected_value = url.HOME_PAGE
+        actually_value = order_page.check_status_button_text()
+        expected_value = 'Посмотреть статус'
         assert actually_value == expected_value, f'Ожидалось значение: "{expected_value}", получено "{actually_value}"'
+
+    def test_logo(self, page_driver):
+        home_page = HomePage(page_driver)
+        home_page.click_order_button(HomePageLocators.UP_ORDER)
+        order_page = OrderPage(page_driver)
+        order_page.wait_for_load_order_page()
+        home_page.click_logo()
+        home_page.check_cookies()
+        assert page_driver.current_url == url.HOME_PAGE
+
+    def test_yandex(self, page_driver):
+        home_page = HomePage(page_driver)
+        home_page.click_yandex()
+        home_page.wait_for_load_yandex_page()
+        assert page_driver.current_url == url.YANDEX

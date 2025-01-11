@@ -134,6 +134,9 @@ class OrderPage(Page):
         WebDriverWait(self.driver, 3).until(
             expected_conditions.visibility_of_element_located(OrderPageLocators.Buttons.POP_UP_CHECK_STATUS))
 
+    def check_status_button_text(self):
+        return self.driver.find_element(*OrderPageLocators.Buttons.POP_UP_CHECK_STATUS).text
+
     @allure.step('Выполняем переход в Окно со статусом заказа')
     def move_to_track_id_page(self):
         track_id = get_digits(self.driver.find_element(*OrderPageLocators.TRACK_ID).text)

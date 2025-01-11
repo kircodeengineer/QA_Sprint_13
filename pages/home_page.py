@@ -28,11 +28,10 @@ class HomePage(Page):
         return True
 
     @allure.step('Ожидаем загрузку начальной страницы')
-    def wait_for_load_home_page(self):
+    def check_cookies(self):
         # необходимо принять куки, иначе selenium не видит нижней кнопки Заказать и выпадающего меню
         if self.check_exists_by_locator(CommonLocators.COOKIE_BUTTON):
             self.click_cookie()
-        WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(url.HOME_PAGE))
 
     @allure.step('Выполняем клик по меню с вопросом - Сколько это стоит? И как оплатить?')
     def click_question_cost_and_pay(self):
